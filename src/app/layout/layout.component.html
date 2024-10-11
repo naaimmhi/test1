@@ -1,0 +1,107 @@
+<mat-drawer-container class="example-container" autosize style="height: 100vh">
+  <mat-drawer
+    #drawer
+    class="flex pl-9 example-sidenav"
+    mode="side"
+    [opened]="true"
+    style="width: 250px"
+  >
+    <h3>Menu</h3>
+
+    <ul class="menu-list" style="color: rgb(0, 0, 255); font-size: small">
+      <li class="mb-3">
+        <a mat-button routerLink="/formulaire">
+          <mat-icon>dashboard</mat-icon> Formulaire
+        </a>
+      </li>
+      <li class="mb-3">
+        <a mat-button routerLink="/filtre">
+          <mat-icon>store</mat-icon> Filtre
+        </a>
+      </li>
+      <li class="mb-3">
+        <a mat-button routerLink="/agents">
+          <mat-icon>group</mat-icon> Agents
+        </a>
+      </li>
+      <li class="mb-3">
+        <a mat-button routerLink="/inscription">
+          <mat-icon>person_add</mat-icon> Inscription
+        </a>
+      </li>
+    </ul>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <div
+            class="menu-list"
+            style="
+              display: flex;
+              align-items: center;
+              color: rgb(0, 0, 255);
+              font-size: small;
+            "
+          >
+            <mat-icon>shopping_cart</mat-icon>
+            <span class="ml-2">Actions</span>
+          </div>
+        </mat-expansion-panel-header>
+
+        <ul class="menu-list" style="color: rgb(0, 0, 255); font-size: small">
+          <li>
+            <a mat-button routerLink="/achat">
+              <mat-icon>shopping_basket</mat-icon> Achat
+            </a>
+          </li>
+          <li>
+            <a mat-button routerLink="/vente">
+              <mat-icon>attach_money</mat-icon> Vente
+            </a>
+          </li>
+        </ul>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- Deconnection button with margin-bottom -->
+    <div class="mt-64 deconnection-button">
+      <button (click)="logout()" mat-button class="w-full">
+        <mat-icon>logout</mat-icon
+        ><span *ngIf="!submitLogout"> Déconnexion</span>
+        <div class="w-32 h-5" *ngIf="submitLogout">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <svg
+              class="w-5 h-5 mr-2 text-white animate-spin"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 4.418 3.582 8 8 8v-4c-1.13 0-2.192-.242-3.154-.678l-.646 1.969z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </button>
+    </div>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-drawer-container>
